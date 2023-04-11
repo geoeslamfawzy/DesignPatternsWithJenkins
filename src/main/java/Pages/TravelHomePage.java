@@ -1,6 +1,7 @@
 package Pages;
 
 import AbstractComponents.SearchFlightAvailability;
+import AbstractComponents.StrategyFactor;
 import PageComponentes.FooterNavigation;
 import PageComponentes.HeaderNavigation;
 import org.openqa.selenium.By;
@@ -35,12 +36,12 @@ public class TravelHomePage {
         return new FooterNavigation(driver,sectionElement);
     }
 
-    public void chooseBookStrategy(SearchFlightAvailability searchFlightAvailability){
-        this.searchFlightAvailability = searchFlightAvailability;
+    public void chooseBookStrategy(String bookingType){
+        StrategyFactor strategyFactor = new StrategyFactor(driver);
+        searchFlightAvailability = strategyFactor.createStrategy(bookingType);
     }
 
     public void bookTrip(String origin, String destination){
-
         this.searchFlightAvailability.checkAvailability(origin, destination);
     }
 

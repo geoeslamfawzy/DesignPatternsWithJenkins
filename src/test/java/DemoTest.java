@@ -1,4 +1,5 @@
 import AbstractComponents.SearchFlightAvailability;
+import PageComponentes.MultiTrip;
 import PageComponentes.RoundTrip;
 import Pages.TravelHomePage;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -9,7 +10,6 @@ import org.testng.annotations.Test;
 
 public class DemoTest {
     TravelHomePage travelHomePage;
-    By sectionElement = By.id("flightSearchContainer");
     WebDriver driver;
 
     @Test
@@ -22,7 +22,7 @@ public class DemoTest {
         System.out.println(travelHomePage.getNavigationBar().getFlightAttribute());
         System.out.println(travelHomePage.getFooterNav().getLinkCount());
         System.out.println(travelHomePage.getNavigationBar().getLinkCount());
-        travelHomePage.chooseBookStrategy(new RoundTrip(driver, sectionElement));
-        travelHomePage.bookTrip("CCU", "GOI");
+        travelHomePage.chooseBookStrategy("roundtrip");
+        travelHomePage.bookTrip("MAA", "HYD");
     }
 }
