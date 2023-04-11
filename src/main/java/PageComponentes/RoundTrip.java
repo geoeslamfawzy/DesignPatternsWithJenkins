@@ -30,6 +30,7 @@ public class RoundTrip extends AbstractComponent implements SearchFlightAvailabi
         find(By.xpath("//a[@value='"+origin+"']")).click();
     }
     public void selectDestinationCity(String destination){
+        find(this.to).click();
         find(By.xpath("(//a[@value='"+destination+"'])[2]")).click();
     }
 }

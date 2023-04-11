@@ -1,4 +1,4 @@
-import PageComponentes.MultiTrip;
+import AbstractComponents.SearchFlightAvailability;
 import PageComponentes.RoundTrip;
 import Pages.TravelHomePage;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -9,8 +9,9 @@ import org.testng.annotations.Test;
 
 public class DemoTest {
     TravelHomePage travelHomePage;
+    By sectionElement = By.id("flightSearchContainer");
     WebDriver driver;
-    By flightBooking = By.id("MultiCityModelPopup");
+
     @Test
     public void flightTest() {
         WebDriverManager.firefoxdriver().setup();
@@ -21,7 +22,7 @@ public class DemoTest {
         System.out.println(travelHomePage.getNavigationBar().getFlightAttribute());
         System.out.println(travelHomePage.getFooterNav().getLinkCount());
         System.out.println(travelHomePage.getNavigationBar().getLinkCount());
-        travelHomePage.chooseBookStrategy(new MultiTrip(driver, flightBooking));
-        travelHomePage.checkAvailability("CCU", "GOI");
+        travelHomePage.chooseBookStrategy(new RoundTrip(driver, sectionElement));
+        travelHomePage.bookTrip("CCU", "GOI");
     }
 }

@@ -35,12 +35,12 @@ public class TravelHomePage {
         return new FooterNavigation(driver,sectionElement);
     }
 
-    public void chooseBookStrategy(SearchFlightAvailability searchFlightAvailability ){
+    public void chooseBookStrategy(SearchFlightAvailability searchFlightAvailability){
         this.searchFlightAvailability = searchFlightAvailability;
-
     }
 
-    public void checkAvailability(String origin, String destination){
+    public void bookTrip(String origin, String destination){
+
         this.searchFlightAvailability.checkAvailability(origin, destination);
     }
 
