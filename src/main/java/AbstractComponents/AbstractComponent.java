@@ -1,9 +1,14 @@
 package AbstractComponents;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 public abstract class AbstractComponent {
@@ -13,14 +18,23 @@ public abstract class AbstractComponent {
         this.driver = driver;
         this.sectionElement =driver.findElement(sectionElement);
     }
-    public WebElement find(By findElementBy)
+    public WebElement find(By locator)
     {
-        return sectionElement.findElement(findElementBy);
+        return sectionElement.findElement(locator);
     }
 
-    public List<WebElement> findElements(By findElementBy)
+    public List<WebElement> findElements(By locator)
     {
-        return sectionElement.findElements(findElementBy);
+        return sectionElement.findElements(locator);
+    }
+
+    public void clickUsingJS(By locator){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click()", locator);
+    }
+    public void waitForElementToDisappear(By locator){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
     }
 
 }
