@@ -7,6 +7,8 @@ import PageComponentes.HeaderNavigation;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import java.util.HashMap;
+
 public class TravelHomePage {
     By sectionElement = By.id("traveller-home");
     By footerNavSectionElement = By.id("buttons");
@@ -41,8 +43,8 @@ public class TravelHomePage {
         searchFlightAvailability = strategyFactor.createStrategy(bookingType);
     }
 
-    public void bookTrip(String origin, String destination){
-        this.searchFlightAvailability.checkAvailability(origin, destination);
+    public void bookTrip(HashMap<String, String> reservationDetails){
+        this.searchFlightAvailability.checkAvailability(reservationDetails);
     }
 
 }

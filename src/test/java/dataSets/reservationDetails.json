@@ -1,0 +1,11 @@
+[
+  {
+    "from": "MAA",
+    "destination": "RDP"
+  },
+  {
+    "from": "MAA",
+    "destination": "RDP",
+    "destination2": "PNQ"
+  }
+]

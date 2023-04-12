@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
+import java.util.HashMap;
 import java.util.function.Consumer;
 
 public class MultiTrip extends AbstractComponent implements SearchFlightAvailability {
@@ -21,10 +22,10 @@ public class MultiTrip extends AbstractComponent implements SearchFlightAvailabi
     }
 
     @Override
-    public void checkAvailability(String from, String destination) {
-        makeStateReady(s -> selectOriginCity(from));
-        selectDestinationCity(destination);
-        selectDestinationCity2("PNQ");
+    public void checkAvailability(HashMap<String, String> reservationDetails) {
+        makeStateReady(s -> selectOriginCity(reservationDetails.get("from")));
+        selectDestinationCity(reservationDetails.get("destination"));
+        selectDestinationCity2(reservationDetails.get("destination2"));
     }
 
     public void selectOriginCity(String origin)

@@ -5,6 +5,7 @@ import AbstractComponents.SearchFlightAvailability;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import java.util.HashMap;
 import java.util.function.Consumer;
 
 public class RoundTrip extends AbstractComponent implements SearchFlightAvailability {
@@ -18,11 +19,11 @@ public class RoundTrip extends AbstractComponent implements SearchFlightAvailabi
         super(driver, sectionElement);
     }
     @Override
-    public void checkAvailability(String from, String destination) {
+    public void checkAvailability(HashMap<String, String> reservationDetails) {
         System.out.println("I'm inside the round trip");
         find(roundRadioIcon).click();
-        selectOriginCity(from);
-        selectDestinationCity(destination);
+        selectOriginCity(reservationDetails.get("from"));
+        selectDestinationCity(reservationDetails.get("destination"));
         makeStateReady(s->find(search).click());
     }
 
