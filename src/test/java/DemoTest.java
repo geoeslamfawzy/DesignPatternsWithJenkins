@@ -22,7 +22,7 @@ public class DemoTest {
         System.out.println(travelHomePage.getNavigationBar().getFlightAttribute());
         System.out.println(travelHomePage.getFooterNav().getLinkCount());
         System.out.println(travelHomePage.getNavigationBar().getLinkCount());
-        travelHomePage.chooseBookStrategy("multitrip");
+        travelHomePage.chooseBookStrategy("roundtrip");
         travelHomePage.bookTrip("MAA", "RDP");
     }
 }
