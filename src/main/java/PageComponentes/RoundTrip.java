@@ -19,7 +19,7 @@ public class RoundTrip extends AbstractComponent implements SearchFlightAvailabi
         super(driver, sectionElement);
     }
     @Override
-    public void checkAvailability(HashMap<String, String> reservationDetails) {
+    public void checkAvailability(HashMap<String, String> reservationDetails) throws InterruptedException {
         System.out.println("I'm inside the round trip");
         find(roundRadioIcon).click();
         selectOriginCity(reservationDetails.get("from"));
@@ -36,7 +36,9 @@ public class RoundTrip extends AbstractComponent implements SearchFlightAvailabi
         find(By.xpath("(//a[@value='"+destination+"'])[2]")).click();
     }
 
-    public void makeStateReady(Consumer<RoundTrip> consumer){
+    public void makeStateReady(Consumer<RoundTrip> consumer) throws InterruptedException {
+        waitForElementToBeClickable(seniorCitizenCheckBox);
+        Thread.sleep(2000);
         find(seniorCitizenCheckBox).click();
         consumer.accept(this);
         System.out.println("I'm Done");

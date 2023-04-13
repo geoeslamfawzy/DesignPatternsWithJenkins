@@ -43,8 +43,11 @@ public class TravelHomePage {
         searchFlightAvailability = strategyFactor.createStrategy(bookingType);
     }
 
-    public void bookTrip(HashMap<String, String> reservationDetails){
+    public void bookTrip(HashMap<String, String> reservationDetails) throws InterruptedException {
         this.searchFlightAvailability.checkAvailability(reservationDetails);
+    }
+    public String getTitle(){
+        return driver.getTitle();
     }
 
 }
